@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    
+  <div id="error_explanation">
+    <% if @book.errors.any? %>
+       <%=@book.errors.count %>errors prohibited this obj from being saved:
+       <ul>
+         <% @book.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+         <% end %>
+        </ul>
+    <% end %>
+  </div>
+      <h2>Editing Book</h2>
+      <%= form_with model: @book do |f| %>
+        <label for="inputTitle">Title</label>
+        <%= f.text_field :title, autofocus: true, id:"inputTitle"%>
+        <br>
+          <label for="inputbody">Body</label>
+           <%= f.text_field :body, autofocus: true, id:"inputbody"%>
+        </br>
+        <%= f.submit "Update Book" %>
+      <% end %>
+      <%= link_to "Show", book_path(@book.id) %>
+      <%= link_to "Back", books_path %>
+    </div>
+  </div>
+</div>
